@@ -21,13 +21,13 @@ class API {
 
     getLikes = async () => {
       const result = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p2MnFuwfM9jXcpbQ4fra/likes')
-        .then((response) => response)
+        .then((response) => response);
       return result;
     }
 
     getComments = async (item) => {
       const result = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p2MnFuwfM9jXcpbQ4fra/comments?item_id=${item.id}`)
-        .then((response) => response)
+        .then((response) => response);
       return result;
     }
 }
