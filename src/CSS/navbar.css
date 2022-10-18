@@ -5,6 +5,7 @@
   position: fixed;
   background-color: purple;
   margin: 0;
+  z-index: 10000;
 }
 
 .nav-ul {
