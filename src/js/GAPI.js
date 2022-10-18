@@ -1,38 +1,33 @@
 const fetch = require('node-fetch');
 
 class API {
-    constructor() {
-        this.url = 'https://www.freetogame.com/api/games';
-    }
+  constructor() {
+    this.url = 'https://www.freetogame.com/api/games';
+  }
 
-    getGames = async() => {
+    getGames = async () => {
       const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': 'e3e649ce61msh9d179687ba85493p1ac9f7jsn9f5dd7ec603d',
-        'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
-      }
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': 'e3e649ce61msh9d179687ba85493p1ac9f7jsn9f5dd7ec603d',
+          'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
+        },
       };
 
-      let result = await fetch('https://free-to-play-games-database.p.rapidapi.com/api/games', options)
-      .then(response => response.json())
-      .then(response => console.log(response))
-      .catch(err => console.error(err));
-
-      return result;      
+      const result = await fetch('https://free-to-play-games-database.p.rapidapi.com/api/games', options)
+        .then((response) => response.json());
+      return result;
     }
 
     getLikes = async () => {
       const result = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p2MnFuwfM9jXcpbQ4fra/likes')
-      .then(response => response)
-      .then(response => console.log(response));
+        .then((response) => response)
       return result;
     }
 
     getComments = async (item) => {
       const result = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p2MnFuwfM9jXcpbQ4fra/comments?item_id=${item.id}`)
-      .then(response => response)
-      .then(response => console.log(response));
+        .then((response) => response)
       return result;
     }
 }
