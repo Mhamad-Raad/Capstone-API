@@ -1,3 +1,2 @@
-h1 {
-  color: purple;
-}
+@import url(./CSS/navbar.css);
+@import url(./CSS/body.css);
