@@ -2,14 +2,14 @@ import { postComments, getComments } from './commentsApi.js';
 
 // ----------------- SHOW COMMENTS WHEN COMMRNT BUTTON IS CLICKED
 const showComments = (i) => {
-  getComments(i)
+  getComments(i);
 };
 
 // ------------------EVENT LISTENER FOR ADD COMMENTS BUTTON
 const sendComments = (element1, element2, element3, index) => {
   element1.addEventListener('click', () => {
     postComments(element2.value, element3.value, index);
-    getComments(index)
+    getComments(index);
   });
 };
 
@@ -18,12 +18,12 @@ const closePopup = (element1, element2, ind) => {
   element1.addEventListener('click', () => {
     element2.innerHTML = '';
     element2.classList.remove('show');
-    showComments(ind)
+    showComments(ind);
   });
 };
 
 // ------------EVENT LISTENER FOR COMMENTS BUTTON
-export const commentPopup = (data) => {
+const commentPopup = (data) => {
   const commentBtns = document.querySelectorAll('.commentBtn');
   const commentSection = document.querySelector('.comment-section');
   const commentBtnArr = Array.from(commentBtns);
@@ -52,3 +52,5 @@ export const commentPopup = (data) => {
     getComments(ind);
   });
 };
+
+export default commentPopup;
