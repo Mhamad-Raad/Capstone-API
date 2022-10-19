@@ -25,7 +25,7 @@ const commentPopup = (data) => {
     const nameInput = document.querySelector('.un');
     const commentInput = document.querySelector('.uc');
     sendComments(submit, commentInput, nameInput);
-    closePopup(closeBtn, commentSection);
+    closePopup(closeBtn, commentSection, ind);
     getComments(ind);
   })
 }
@@ -39,13 +39,15 @@ const sendComments = (element1, element2, element3) => {
 }
 
 // -------------- EVENT LISTENER TO CLOSE POPUP
-const closePopup = (element1, element2) => {
+const closePopup = (element1, element2, ind) => {
   element1.addEventListener('click', () => {
     element2.innerHTML = '';
     element2.classList.remove('show');
+    showComments()
   })
+}
 
 // ----------------- SHOW COMMENTS WHEN COMMRNT BUTTON IS CLICKED
-const showComments = () => {
-  
+const showComments = (i) => {
+  getComments(i)
 }
