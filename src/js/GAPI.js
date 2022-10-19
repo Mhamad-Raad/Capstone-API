@@ -34,16 +34,16 @@ class API {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          "item_id": item.id,
-          "username": item.user,
-          "comment": item.comment,
-      }),
+          item_id: item.id,
+          username: item.user,
+          comment: item.comment,
+        }),
       };
 
-     const result = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p2MnFuwfM9jXcpbQ4fra/likes', options)
+      const result = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p2MnFuwfM9jXcpbQ4fra/likes', options)
         .then((response) => response);
 
-        return result;
+      return result;
     }
 }
 

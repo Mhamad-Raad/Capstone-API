@@ -2,12 +2,10 @@ import '../style.css';
 import API from './GAPI.js';
 
 const gamesDiv = document.querySelector('.games');
-const gameHeader= document.querySelector('.games_header');
+const gameHeader = document.querySelector('.games_header');
 const api = new API();
 
-
 const render = async () => {
-  
   const games = await api.getGames();
 
   gameHeader.innerHTML = ` <button class="games_btn">Games(${games.length})</button>`;
@@ -24,6 +22,6 @@ const render = async () => {
       </div>
       `;
   });
-} 
+};
 
 render();
