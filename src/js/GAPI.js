@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 class API {
   constructor() {
     this.url = 'https://www.freetogame.com/api/games';
@@ -15,7 +13,11 @@ class API {
       };
 
       const result = await fetch('https://free-to-play-games-database.p.rapidapi.com/api/games', options)
-        .then((response) => response.json());
+        .then((response) => response.json()).then((result) => {
+          const loader = document.querySelector('#loader');
+          loader.style.display = 'none';
+          return result;
+        });
       return result;
     }
 
@@ -25,11 +27,24 @@ class API {
       return result;
     }
 
-    getComments = async (item) => {
-      const result = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p2MnFuwfM9jXcpbQ4fra/comments?item_id=${item.id}`)
+    addLikes = async (item) => {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "item_id": item.id,
+          "username": item.user,
+          "comment": item.comment,
+      }),
+      };
+
+     const result = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p2MnFuwfM9jXcpbQ4fra/likes', options)
         .then((response) => response);
-      return result;
+
+        return result;
     }
 }
 
-export default API;
+module.exports = API;
