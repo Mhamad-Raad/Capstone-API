@@ -9,7 +9,7 @@ const commPop = (arg) => {
 };
 
 // Post Comments to API
-export const postComments = async (comment, name,ind) => {
+export const postComments = async (comment, name, ind) => {
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/sZdlIyu4dVy3uNIhS8YY/comments';
   const id = 'item' + ind // eslint-disable-line
   fetch(url, {
@@ -17,17 +17,17 @@ export const postComments = async (comment, name,ind) => {
     body: JSON.stringify({
       item_id: id,
       username: name,
-      comment: comment
+      comment: comment,
     }),
     headers: {
-      'Content-type': 'application/json; charset=UTF-8'
+      'Content-type': 'application/json; charset=UTF-8',
     },
-  }).then((reply) => reply.json()).then((val) => console.log(val));
- };
+  }).then((reply) => reply.json()).then((val) => val);
+};
 
 // Retrieve Comments from API
 export const getComments = async (ind) => {
-  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/sZdlIyu4dVy3uNIhS8YY/comments?item_id=item' + ind; // eslint-disab;e-line
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/sZdlIyu4dVy3uNIhS8YY/comments?item_id=item' + ind; // eslint-disable-line
   const recieve = await fetch(url);
   const data = await recieve.json();
   commPop(data);
