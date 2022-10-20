@@ -30,23 +30,46 @@ const commentPopup = (data) => {
   commentBtnArr.forEach((button) => {
     const ind = commentBtnArr.indexOf(button);
     button.addEventListener('click', () => {
-      commentSection.innerHTML = `<div class="c-popup">
-                                <p class="close">&#10006</p>
-                                <img src="${data.image}" alt="" class="poster">
-                                <p className="mov-name">${data.name}</p>
-                                <div class="bio"></div>
-                                <h2 class="comm-1">Comments</h2>
-                                <div class="comm"></div>
-                                <h2 class="add-com">Add Comments</h2>
-                                <input type="text" name="name" class="un" placeholder="Enter Your Name">
-                                <input type="text" name="comments" class="uc" placeholder="Write Comments">
-                                <button class="submit">Comment</button>
-                                </div>`;
+      getComments(ind);
+      commentSection.innerHTML = `<div class="popComment">
+                                    <div class="comment">
+                                      <div class="comment_close"><img src="" alt="close"></div>
+                                      <div class="comment__top">
+                                        <div class="comment__name">${data[ind].thumbanil}</div>
+                                      </div>
+                                      <div class="comment__content">
+                                        <div class="comment__data">
+                                          <div class="data_desc">
+                                            <div class="comment__img"><img src="#" alt=""></div>
+                                            <ul class="comment_list">
+                                              <li class="comment_li"><span class="comment_type">genre:</span>${data.title}</li>
+                                              <li class="comment_li"><span class="comment_type">platform:</span>${data.platform}</li>
+                                              <li class="comment_li"><span class="comment_type">publisher:</span>${data.publisher}</li>
+                                              <li class="comment_li"><span class="comment_type">release_date:</span>${data.release_date}</li>
+                                            </ul>
+                                            </div>
+                                            <p class="comment__p"></p>
+                                          </div>
+                                        <div class="comment_form">
+                                          <div class="form__tittle"></div>
+                                          <form>
+                                            <input type="text" class="form__input__name" placeholder="Your name">
+                                            <input type="text" class="form__input__comment" placeholder="Your insight">
+                                            <button type="button" class="form__btn">Comment</button>
+                                          </form>
+                                          <div class="comment_list">
+                                            <div class="comment__qty">Comments(#)</div>
+                                            <ul class="comments"></ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>`;
     });
-    const submit = document.querySelector('.submit');
-    const closeBtn = document.querySelector('.close');
-    const nameInput = document.querySelector('.un');
-    const commentInput = document.querySelector('.uc');
+    const submit = document.querySelector('.form__btn');
+    const closeBtn = document.querySelector('.comment_close');
+    const nameInput = document.querySelector('form__input__name');
+    const commentInput = document.querySelector('.form__input__comment');
     sendComments(submit, commentInput, nameInput);
     closePopup(closeBtn, commentSection, ind);
     getComments(ind);

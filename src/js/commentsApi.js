@@ -1,11 +1,16 @@
 // Populate DOM with comments
 const commPop = (arg) => {
   const list = document.querySelector('.comm');
+  const showCommentNumber = document.querySelector('comment_qty');
+  const commentNumber = arg.length;
   for (let i = 0; i < arg.length; i += 1) {
-    list.innerHTML += `<p class="indi-comment">${arg[i].creation_date}</p>
-                       <p class="indi-comment">${arg[i].comment}</p>
-                       <p class="indi-comment">${arg[i].username}</p>`;
+    list.innerHTML += `<li className="eachComment">
+                        <p class="indi-comment">${arg[i].creation_date}</p>
+                        <p class="indi-comment">${arg[i].comment}</p>
+                        <p class="indi-comment">${arg[i].username}</p>
+                       </li`;
   }
+  showCommentNumber.textContent = `Comments(${commentNumber})`;
 };
 
 // Post Comments to API
