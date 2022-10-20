@@ -13,18 +13,18 @@ class API {
       };
 
       const result = await fetch('https://free-to-play-games-database.p.rapidapi.com/api/games', options)
-        .then((response) => response.json()).then((result) => {
-          const loader = document.querySelector('#loader');
-          loader.style.display = 'none';
-          return result;
-        });
+        .then((response) => response.json()).then((result) => result);
       return result;
     }
 
-    getLikes = async () => {
-      const result = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p2MnFuwfM9jXcpbQ4fra/likes')
-        .then((response) => response);
-      return result;
+    getLikes = async (item) => {
+      let result = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/p2MnFuwfM9jXcpbQ4fra/likes')
+        .then((response) => response).then((result) => result.json());
+      result = result.filter((a) => a.item_id === item.id);
+      if (result.length === 0) {
+        return 0;
+      }
+      return result[0].likes;
     }
 
     addLikes = async (item) => {
@@ -35,8 +35,6 @@ class API {
         },
         body: JSON.stringify({
           item_id: item.id,
-          username: item.user,
-          comment: item.comment,
         }),
       };
 

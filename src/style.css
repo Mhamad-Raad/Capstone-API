@@ -35,6 +35,18 @@
   animation: spin 1s linear infinite;
 }
 
+.btn-loader {
+  display: none;
+  z-index: 1;
+  width: 20px;
+  height: 20px;
+  border: 16px solid var(--dark);
+  border-radius: 50%;
+  border-top: 16px solid var(--cream);
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
@@ -182,6 +194,23 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+}
+
+.like_btn {
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 1.5rem;
+  cursor: pointer;
+  min-width: 50px;
+  width: 50%;
+  height: 20px;
+  border-radius: 5px;
+}
+
+.like_btn:hover {
+  text-decoration: underline;
 }
 
 .card_title {
