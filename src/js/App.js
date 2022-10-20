@@ -37,7 +37,7 @@ function addLikeBtnListener(games) {
       });
       games = games.map((key) => {
         if (key.id === temp) {
-          key =  addLikesfunc(key);
+          key = addLikesfunc(key);
         }
         return key;
       });
