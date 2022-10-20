@@ -1,44 +1,48 @@
+const reservations = () => {
+  const getData = async (idGame) => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': 'a7b39c66e2msh955dc94420a4cf6p1f79f5jsn778aaf9144a8',
+        'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
+      },
+    };
 
-const reservations =  () =>{ 
-
-const getData = async (idGame) => {
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': 'a7b39c66e2msh955dc94420a4cf6p1f79f5jsn778aaf9144a8',
-      'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com'
-    }
-  };
-
-  const data = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${idGame}`, options)
-  .then((response) => response.json()).then((data) => {
-    //console.log(data)
-    return data;
-  });
+    const data = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${idGame}`, options)
+      .then((response) => response.json()).then((data) => {
+        return data;
+      });
     return data;
   };
 
-const reserve_section = document.querySelector('.reserve_section');
+  const reserveSection = document.querySelector('.reserveSection');
 
- const closeReserve = (reserve_section) => { 
-  const closeBtn = document.querySelector('.comment_close');
+  const closeReserve = (reserveSection) => {
+    const closeBtn = document.querySelector('.comment_close');
 
-  closeBtn.addEventListener('click', () => {
-    reserve_section.className = 'popReserve';
-  });
-}
+    closeBtn.addEventListener('click', () => {
+      reserveSection.className = 'popReserve';
+    });
+  };
 
-const reservationsBtn = document.querySelectorAll('.card_btn_res');
- 
+  const reservationsBtn = document.querySelectorAll('.card_btn_res');
+
   reservationsBtn.forEach((btn) => {
     btn.addEventListener('click', async () => {
       const idGame = btn.id;
       const gameDataFns = await getData(idGame);
 
-      const { title, screenshots: { 0: { image } }, genre, platform, publisher, release_date} = gameDataFns;
+      const {
+        title,
+        screenshots: { 0: { image } },
+        genre,
+        platform,
+        publisher,
+        release_date,
+      } = gameDataFns;
 
-      reserve_section.className = 'popReserve open'
-      reserve_section.innerHTML = `
+      reserveSection.className = 'popReserve open';
+      reserveSection.innerHTML = `
       <div class="comment">
         <div class="comment_close"><img src="./assets/images/exit.svg" alt="close"></div>
         <div class="comment__top">
@@ -63,15 +67,9 @@ const reservationsBtn = document.querySelectorAll('.card_btn_res');
         </div>
 
       </div>`;
-      //console.log(reserve_section);
-      
-      closeReserve(reserve_section);
-
+      closeReserve(reserveSection);
     });
-  })
-
-}
-
-
+  });
+};
 
 export default reservations;
