@@ -30,6 +30,7 @@ const commentPopup = (data) => {
   commentBtnArr.forEach((button) => {
     const ind = commentBtnArr.indexOf(button);
     button.addEventListener('click', () => {
+      getComments(ind)
       commentSection.innerHTML = `<div class="popComment">
                                     <div class="comment">
                                       <div class="comment_close"><img src="" alt="close"></div>
