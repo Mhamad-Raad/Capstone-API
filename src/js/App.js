@@ -1,5 +1,6 @@
 import '../style.css';
 import API from './GAPI.js';
+import reservations from './reservations.js';
 
 const gamesDiv = document.querySelector('.games');
 const gameHeader = document.querySelector('.games_header');
@@ -71,18 +72,28 @@ const render = async () => {
             <div class="btn-loader"></div>
             <button class="like_btn" data-id="${game.id}">Likes (${game.likes})</button>
           
-
         <p class="card__p">${game.short_description}</p>
         
         <div class="card_btns">
           <button class="card_btn">Comments</button>
-          <button class="card_btn">Reservations</button>
+          <button class="card_btn_res" id="${game.id}">Reservations</button>
         </div>
       </div>
       `;
+
+    reservations();
+      
   });
+
+  
+
   setTimeout(addLikeBtnListener, 3000, games);
+
+  
+
 };
 window.load = render();
+
+
 
 // window.addEventListener('DOMContentLoaded', addLikeBtnListener);
