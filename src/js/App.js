@@ -1,5 +1,6 @@
 import '../style.css';
 import API from './GAPI.js';
+import addLikesfunc from './addLikes.js';
 
 const gamesDiv = document.querySelector('.games');
 const gameHeader = document.querySelector('.games_header');
@@ -36,7 +37,7 @@ function addLikeBtnListener(games) {
       });
       games = games.map((key) => {
         if (key.id === temp) {
-          key.likes += 1;
+          key =  addLikesfunc(key);
         }
         return key;
       });
