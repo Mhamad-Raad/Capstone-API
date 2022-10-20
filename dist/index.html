@@ -39,7 +39,7 @@
         <form>
           <input type="text" class="form__input" placeholder="Your name">
           <input type="text" class="form__input" placeholder="Your insight">
-          <button class="form__btn">Comment</button>
+          <button type="button" class="form__btn">Comment</button>
         </form>
         <div class="comment_list">
           <div class="comment__qty">Comments (3)</div>
@@ -68,30 +68,25 @@
   </div>
   
   <header>
-  <div class="top__header"></div>
+  
   <div class="principal__header">
     <div class="games_header">
      
     </div>
-    <div class="logo"><img src="images/freetoplayh.svg" ></div> 
-    <!-- mauricio fix the above line please. the problem is with the logo svg in assets -->
+    <div class="logo"><img src="./assets/images/freetoplayh.svg"></div> 
     <div class="categories__header">
-      <button class="cat_btn">Categories</button>
+      <button type="button" class="cat_btn">Categories</button>
     </div>
   </div>
   </header>
   
   <div class="container">
-    <div class="games">
-    <div id="loader">
-
+    <div id="loader"></div>
     </div>
-    </div>
+    <div class="games"> </div>
   </div>
   
   <footer>Created by ...</footer>
-  <script src="pop.js"></script>
-
   <script src="../dist/main.js"></script>
 </body>
 </html>
