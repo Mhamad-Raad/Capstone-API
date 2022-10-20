@@ -122,7 +122,6 @@ body {
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 /* ----------- header ------------ */
@@ -258,6 +257,25 @@ header {
 }
 
 /* ----- footer ---- */
+.bigger {
+  font-size: 18px;
+}
+
+.smaller {
+  font-size: 12px;
+}
+
+.mr {
+  margin-right: 10px;
+}
+
+.mt {
+  margin-top: 10px;
+}
+
+.mb {
+  margin-bottom: 10px;
+}
 
 footer {
   width: 100%;
