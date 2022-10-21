@@ -1,4 +1,6 @@
 /* eslint-disable no-console, camelcase */
+import createLength from './lengthReserve.js';
+
 const reservations = () => {
   const getData = async (idGame) => {
     const options = {
@@ -50,7 +52,7 @@ const reservations = () => {
   }
 
   const resPop = (arg, reservationList, reservationTitle) => {
-    const reservationFigure = arg.length === undefined ? 0 : arg.length;
+    const reservationFigure = createLength(arg);
     reservationList.innerHTML = '';
     reservationTitle.innerHTML = '';
     reservationTitle.innerHTML = `<p>Reservations (${reservationFigure})</p>`;

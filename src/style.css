@@ -288,6 +288,7 @@ footer {
   text-align: center;
   padding: 0.8rem;
   margin-top: 5rem;
+  z-index: 0;
 }
 
 .comment_close {
@@ -330,7 +331,7 @@ footer {
 }
 
 .popComment {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -430,7 +431,6 @@ footer {
 
 .open {
   display: flex;
-  position: absolute;
 }
 
 .form__reserve {
