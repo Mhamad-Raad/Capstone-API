@@ -1,21 +1,22 @@
 // Populate DOM with comments
-const commPop = (arg) => {
-  const list = document.querySelector('.comm');
-  const showCommentNumber = document.querySelector('comment_qty');
+const commPop = (arg, element) => {
+  console.log(element)
+  const showCommentNumber = document.querySelector('.comment_qty');
   const commentNumber = arg.length;
+  console.log(commentNumber)
   for (let i = 0; i < arg.length; i += 1) {
-    list.innerHTML += `<li className="eachComment">
+    element.innerHTML += `<li class="eachComment">
                         <p class="indi-comment">${arg[i].creation_date}</p>
                         <p class="indi-comment">${arg[i].comment}</p>
                         <p class="indi-comment">${arg[i].username}</p>
                        </li`;
   }
-  showCommentNumber.textContent = `Comments(${commentNumber})`;
+  //showCommentNumber.textContent = `Comments(${commentNumber})`;
 };
 
 // Post Comments to API
 export const postComments = async (comment, name, ind) => {
-  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/sZdlIyu4dVy3uNIhS8YY/comments';
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NcJbTl5ebFgHPkkhVNm4/comments';
   const id = 'item' + ind // eslint-disable-line
   fetch(url, {
     method: 'POST',
@@ -31,9 +32,12 @@ export const postComments = async (comment, name, ind) => {
 };
 
 // Retrieve Comments from API
-export const getComments = async (ind) => {
-  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/sZdlIyu4dVy3uNIhS8YY/comments?item_id=item' + ind; // eslint-disable-line
+export const getComments = async (i, element) => {
+  const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NcJbTl5ebFgHPkkhVNm4/comments?item_id=item${i}`; // eslint-disable-line
+  console.log(url)
   const recieve = await fetch(url);
   const data = await recieve.json();
-  commPop(data);
+  console.log(data, )
+  commPop(data, element);
 };
+

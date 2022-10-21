@@ -1,6 +1,7 @@
 import '../style.css';
 import API from './GAPI.js';
 import addLikesfunc from './addLikes.js';
+import { commentPopup } from './showComments.js';
 
 const gamesDiv = document.querySelector('.games');
 const gameHeader = document.querySelector('.games_header');
@@ -76,11 +77,13 @@ const render = async () => {
         <p class="card__p">${game.short_description}</p>
         
         <div class="card_btns">
-          <button class="card_btn">Comments</button>
+          <button class="commentBtn">Comments</button>
           <button class="card_btn">Reservations</button>
         </div>
       </div>
       `;
+    const commentButtons = document.querySelectorAll('.commentBtn');
+    commentPopup(games, commentButtons);
   });
   setTimeout(addLikeBtnListener, 3000, games);
 };
