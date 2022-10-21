@@ -1,3 +1,4 @@
+/* eslint-disable no-console, camelcase*/
 const reservations = () => {
   const getData = async (idGame) => {
     const options = {
@@ -82,7 +83,7 @@ const reservations = () => {
         genre,
         platform,
         publisher,
-        release_date,
+        release_date, // eslint-disable-line
       } = gameDataFns;
 
       reserveSection.className = 'popReserve open';
@@ -98,7 +99,7 @@ const reservations = () => {
             <li class="comment_li"><span class="comment_type">genre:</span>${genre}</li>
             <li class="comment_li"><span class="comment_type">platform:</span>${platform}</li>
             <li class="comment_li"><span class="comment_type">publisher:</span>${publisher}</li>
-            <li class="comment_li"><span class="comment_type">release_date:</span>${release_date}</li>
+            <li class="comment_li"><span class="comment_type">release_date:</span>${release_date}</li> 
           </ul>
         </div>
         <div class="form__reserve">
