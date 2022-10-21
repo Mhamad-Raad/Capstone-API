@@ -1,4 +1,4 @@
-/* eslint-disable no-console, camelcase*/
+/* eslint-disable no-console, camelcase */
 const reservations = () => {
   const getData = async (idGame) => {
     const options = {
