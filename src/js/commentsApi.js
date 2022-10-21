@@ -40,5 +40,5 @@ export const getComments = async (i, element1, ele) => {
   console.log(data, )
   commPop(data, element1, ele);
   console.log('get comments')
+  return data;
 };
-
