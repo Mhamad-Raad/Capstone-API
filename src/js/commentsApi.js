@@ -1,39 +1,44 @@
 // Populate DOM with comments
-const commPop = (arg) => {
-  const list = document.querySelector('.comm');
-  const showCommentNumber = document.querySelector('comment_qty');
-  const commentNumber = arg.length;
+const commPop = (arg, element, element2) => {
+  const commentFigure = arg.length === undefined ? 0 : arg.length;
+  element.innerHTML = '';
+  element.innerHTML = `<p>Comments (${commentFigure})</p>`;
   for (let i = 0; i < arg.length; i += 1) {
-    list.innerHTML += `<li className="eachComment">
-                        <p class="indi-comment">${arg[i].creation_date}</p>
-                        <p class="indi-comment">${arg[i].comment}</p>
-                        <p class="indi-comment">${arg[i].username}</p>
-                       </li`;
+    element.innerHTML += `<li class="eachComment">
+                          <p class="indi-comment">${arg[i].creation_date}</p>
+                          <p class="indi-comment">${arg[i].comment}</p>
+                          <p class="indi-comment">${arg[i].username}</p>
+                         </li>`;
   }
-  showCommentNumber.textContent = `Comments(${commentNumber})`;
+  element2.textContent = `Comments(${commentFigure})`;
 };
 
 // Post Comments to API
 export const postComments = async (comment, name, ind) => {
-  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/sZdlIyu4dVy3uNIhS8YY/comments';
-  const id = 'item' + ind // eslint-disable-line
-  fetch(url, {
-    method: 'POST',
-    body: JSON.stringify({
-      item_id: id,
-      username: name,
-      comment: comment,
-    }),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  }).then((reply) => reply.json()).then((val) => val);
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NcJbTl5ebFgHPkkhVNm4/comments';
+  const id = 'item' + ind; // eslint-disable-line
+  if (name !== '' && comment !== '') {
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: id,
+        username: name,
+        comment: comment,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((reply) => reply.text()).then((val) => val);
+  } else {
+    alert('Please fill in all fields');
+  }
 };
 
 // Retrieve Comments from API
-export const getComments = async (ind) => {
-  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/sZdlIyu4dVy3uNIhS8YY/comments?item_id=item' + ind; // eslint-disable-line
-  const recieve = await fetch(url);
-  const data = await recieve.json();
-  commPop(data);
+export const getComments = async (i, element1, ele) => {
+  const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/NcJbTl5ebFgHPkkhVNm4/comments?item_id=item${i}`; // eslint-disable-line
+  const recieve = await fetch(url).then((reply) => reply.json()).then((val) => val);
+  const data = await recieve;
+  commPop(data, element1, ele);
+  return data;
 };
