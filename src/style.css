@@ -402,6 +402,7 @@ form {
   width: 34%;
   padding: 10px;
   font-size: 16px;
+  cursor: pointer;
 }
 
 .form__btn:hover {
