@@ -180,6 +180,10 @@ header {
   flex: 1;
 }
 
+.comment-section {
+  margin-top: 300;
+  margin-left: 300;
+}
 /* ------- games --------- */
 
 .games {
@@ -272,6 +276,7 @@ footer {
 
 /* ---------Pop--------- */
 
+
 .popComment {
   /*display: none;*/
   position: fixed;
@@ -285,9 +290,11 @@ footer {
 }
 
 .comment {
-  width: 100%;
+  width: 75%;
   max-width: 107rem;
   position: relative;
+  margin-top: 15%;
+  margin-left: 22%;
   padding: 3rem;
   border: 5px solid var(--purple);
   border-radius: 0.5rem;
@@ -297,7 +304,9 @@ footer {
 .comment_close {
   position: absolute;
   top: 0.5rem;
-  right: 0.5rem;
+  right: 1.5rem;
+  font-size: 20px;
+  color: var(--cream);
 }
 
 .comment__top {
@@ -348,5 +357,56 @@ footer {
   text-align: center;
   font-weight: bold;
   padding: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form__input__name {
+  width: 100%;
+  height: 35px;
+  margin-bottom: 12px;
+}
+
+.form__input__comment {
+  width: 100%;
+  height: 70px;
+  margin-bottom: 12px;
+
+}
+
+.form__btn {
+ background-color: var(--cream);
+ width: 34%;
+ padding: 10px;
+ font-size: 16px;
+}
+
+.form__btn:hover {
+  background-color: var(--purple);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+}
+
+.comment__qty {
+  text-align: center;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.eachComment {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+.comment__p {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 10px;
 }
 
