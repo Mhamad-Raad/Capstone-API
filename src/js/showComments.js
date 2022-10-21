@@ -36,8 +36,8 @@ export const commentPopup = (data, buttons) => {
     const ind = commentBtnArr.indexOf(button);
     button.addEventListener('click', () => {
       commentSection.innerHTML = `<div class="popComment">
-                                    <div class="comment">
-                                      <div class="comment_close">&#10006;</div>
+                                    <div class="comment1">
+                                      <div class="comment_close1">&#10006;</div>
                                       <div class="comment__top">
                                         <div class="comment__name">${data[ind].title}</div>
                                       </div>
@@ -72,7 +72,7 @@ export const commentPopup = (data, buttons) => {
       const commentSec = document.querySelector('.comment-section');
       const submit = document.querySelector('.form__btn');
       const list = document.querySelector('.commes');
-      const closeBtn = document.querySelector('.comment_close');
+      const closeBtn = document.querySelector('.comment_close1');
       const nameInput = document.querySelector('.form__input__name');
       const commentInput = document.querySelector('.form__input__comment');
       const commentNumber = document.querySelector('.comment__qty');
@@ -87,5 +87,4 @@ export const commentPopup = (data, buttons) => {
     });
   });
 };
-
 export default commentPopup;

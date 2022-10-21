@@ -1,5 +1,6 @@
 import '../style.css';
 import API from './GAPI.js';
+import reservations from './reservations.js';
 import addLikesfunc from './addLikes.js';
 import { commentPopup } from './showComments.js';
 
@@ -73,15 +74,15 @@ const render = async () => {
             <div class="btn-loader"></div>
             <button class="like_btn" data-id="${game.id}">Likes (${game.likes})</button>
           
-
         <p class="card__p">${game.short_description}</p>
         
         <div class="card_btns">
           <button class="commentBtn card_btn">Comments</button>
-          <button class="card_btn">Reservations</button>
+          <button class="card_btn" id="${game.id}">Reservations</button>
         </div>
       </div>
       `;
+    reservations();
     const commentButtons = document.querySelectorAll('.commentBtn');
     commentPopup(games, commentButtons);
   });
