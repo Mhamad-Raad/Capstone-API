@@ -57,13 +57,18 @@ const reservations = () => {
             <li class="comment_li"><span class="comment_type">release_date:</span>${release_date}</li>
           </ul>
         </div>
-        <form class="form__reserve">
+        <div class="form__reserve">
+          <form class="form__group">
           <h3 class="reserve__h3">Add a reservation</h3>
           <input type="text" class="form__input" placeholder="Your name">
           <input type="date" class="form__input" placeholder="Start Date">
           <input type="date" class="form__input" placeholder="Finish Date">
           <button class="form_btn">Reserve</button>
-        </form>
+          </form>
+          <div class="reserve__msg">
+          
+          </div>
+        </div>
         </div>
 
       </div>`;
