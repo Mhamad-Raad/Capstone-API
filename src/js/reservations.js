@@ -94,7 +94,7 @@ const getReservations = async (ID, reservationList, reservationTitle) => {
       reserveSection.className = 'popReserve open';
       reserveSection.innerHTML = `
       <div class="comment">
-        <div class="comment_close"><img src="./assets/images/exit.svg" alt="close"></div>
+        <div class="comment_close"><img src="./images/exit.svg" alt="close"></div>
         <div class="comment__top">
         <div class="comment__name">${title}</div>
         </div>
