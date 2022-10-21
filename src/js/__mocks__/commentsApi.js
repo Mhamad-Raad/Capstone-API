@@ -3,6 +3,6 @@ const postComments = (comment, comments) => {
   return comments.length;
 };
 
-const getcomments = comments => comments.length;
+const getcomments = (comments) => comments.length;
 
 module.exports = { postComments, getcomments };

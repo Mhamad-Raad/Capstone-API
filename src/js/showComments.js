@@ -3,11 +3,7 @@ import { postComments, getComments } from './commentsApi.js';
 // ------------------EVENT LISTENER FOR ADD COMMENTS BUTTON
 const sendComments = (element1, element2, element3, element4, element5, index) => {
   const today = new Date();
-  const date = today.getFullYear()
-  + '-'
-  + (today.getMonth() + 1)
-  + '-'
-  + today.getDate();
+  const date = `${today.getFullYear()} - ${today.getMonth() + 1} - ${today.getDate()}`;
   element1.addEventListener('click', () => {
     postComments(element2.value, element3.value, index);
     const commentsRow = document.querySelector('.commes');
