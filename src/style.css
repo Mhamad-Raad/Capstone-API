@@ -180,10 +180,6 @@ header {
   flex: 1;
 }
 
-.comment-section {
-  margin-top: 300;
-  margin-left: 300;
-}
 /* ------- games --------- */
 
 .games {
@@ -276,9 +272,7 @@ footer {
 
 /* ---------Pop--------- */
 
-
 .popComment {
-  /*display: none;*/
   position: fixed;
   top: 0;
   left: 0;
@@ -293,8 +287,9 @@ footer {
   width: 75%;
   max-width: 107rem;
   position: relative;
-  margin-top: 15%;
-  margin-left: 22%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   padding: 3rem;
   border: 5px solid var(--purple);
   border-radius: 0.5rem;
@@ -345,6 +340,9 @@ footer {
 
 .comment__p {
   line-height: 3rem;
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 10px;
 }
 
 .comment_form {
@@ -375,14 +373,13 @@ form {
   width: 100%;
   height: 70px;
   margin-bottom: 12px;
-
 }
 
 .form__btn {
- background-color: var(--cream);
- width: 34%;
- padding: 10px;
- font-size: 16px;
+  background-color: var(--cream);
+  width: 34%;
+  padding: 10px;
+  font-size: 16px;
 }
 
 .form__btn:hover {
@@ -403,10 +400,3 @@ form {
   justify-content: space-between;
   font-size: 18px;
 }
-
-.comment__p {
-  font-size: 20px;
-  font-weight: 500;
-  margin-top: 10px;
-}
-
