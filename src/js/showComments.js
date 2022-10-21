@@ -2,8 +2,16 @@ import { postComments, getComments } from './commentsApi.js';
 
 // ------------------EVENT LISTENER FOR ADD COMMENTS BUTTON
 const sendComments = (element1, element2, element3, element4, element5, index) => {
+var today = new Date();
+var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
   element1.addEventListener('click', () => {
     postComments(element2.value, element3.value, index);
+    const commentsRow = document.querySelector('.commes');
+    commentsRow.innerHTML += `<li class="eachComment">
+    <p class="indi-comment">${date}</p>
+    <p class="indi-comment">${element2.value}</p>
+    <p class="indi-comment">${element3.value}</p>
+   </li>`
   });
   getComments(index, element4, element5);
 };
@@ -22,6 +30,7 @@ export const commentPopup = (data, buttons) => {
   const commentBtnArr = Array.from(buttons);
   commentBtnArr.forEach((button) => {
     const ind = commentBtnArr.indexOf(button);
+   
     button.addEventListener('click', () => {
       commentSection.innerHTML = `<div class="popComment">
                                     <div class="comment">
@@ -49,7 +58,7 @@ export const commentPopup = (data, buttons) => {
                                             <input type="text" class="form__input__comment" placeholder="Your insight">
                                             <button type="button" class="form__btn">Comment</button>
                                           </form>
-                                          <div class="comment_list">
+                                          <div class="commes">
                                             <div class="comment__qty">Comments(#)</div>
                                               <div class="comment__div"></div>
                                           </div>
@@ -59,14 +68,22 @@ export const commentPopup = (data, buttons) => {
                                   </div>`;
       const commentSec = document.querySelector('.comment-section');
       const submit = document.querySelector('.form__btn');
-      const list = document.querySelector('.comment__div');
+      const list = document.querySelector('.commes');
       const closeBtn = document.querySelector('.comment_close');
       const nameInput = document.querySelector('.form__input__name');
       const commentInput = document.querySelector('.form__input__comment');
       const commentNumber = document.querySelector('.comment__qty')
       sendComments(submit, commentInput, nameInput, list, commentNumber, ind);
       closePopup(closeBtn, commentSec);
-      getComments(ind, list, commentNumber);
+      window.addEventListener('click', (e) => {
+        console.log(e.target);
+        if (e.target === document.querySelector('.popComment')) {
+          console.log(e.target);
+          commentSection.innerHTML = '';
+          commentSection.classList.remove('show');
+        }
+      });
+      
     });
   });
 

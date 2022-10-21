@@ -2,6 +2,7 @@ import '../style.css';
 import API from './GAPI.js';
 import addLikesfunc from './addLikes.js';
 import { commentPopup } from './showComments.js';
+import { postComments, getComments } from './commentsApi.js';
 
 const gamesDiv = document.querySelector('.games');
 const gameHeader = document.querySelector('.games_header');
@@ -63,7 +64,7 @@ const render = async () => {
   games = games.slice(0, 6);
   gameHeader.innerHTML = ` <button class="games_btn">Games(${games.length})</button>`;
 
-  games.forEach(async (game) => {
+  games.forEach(async (game, i) => {
     game.likes = await api.getLikes(game);
     gamesDiv.innerHTML += `
     <div class="game_card">
