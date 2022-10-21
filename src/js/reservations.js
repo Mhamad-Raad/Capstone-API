@@ -25,6 +25,12 @@ const reservations = () => {
     });
   };
 
+  function addReservation(userName, startDate, endDate, itemId) {
+
+  }
+
+
+
   const reservationsBtn = document.querySelectorAll('.card_btn_res');
 
   reservationsBtn.forEach((btn) => {
@@ -66,13 +72,14 @@ const reservations = () => {
           <button class="form_btn">Reserve</button>
           </form>
           <div class="reserve__msg">
-          
+
           </div>
         </div>
         </div>
 
       </div>`;
       closeReserve(reserveSection);
+      // addreservation();
     });
   });
 };

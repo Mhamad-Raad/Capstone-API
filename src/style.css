@@ -220,11 +220,8 @@ header {
 }
 
 .card_btn,
-<<<<<<< HEAD
-.card_btn_res {
-=======
+.card_btn_res,
 .comentBtn {
->>>>>>> c92787f4ee7df413768638490f6e320f93b070d0
   background-color: var(--cream);
   border-radius: 0.5rem;
   border: 1px solid var(--cream);
@@ -295,13 +292,11 @@ footer {
 
 /* ---------Pop--------- */
 
-<<<<<<< HEAD
 .popReserve {
   display: none;
-=======
+}
+
 .popComment {
->>>>>>> c92787f4ee7df413768638490f6e320f93b070d0
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -324,16 +319,6 @@ footer {
   background-color: #1b2430cc;
 }
 
-<<<<<<< HEAD
-.comment_close {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  cursor: pointer;
-}
-
-=======
->>>>>>> c92787f4ee7df413768638490f6e320f93b070d0
 .comment__top {
   text-align: center;
   font-size: 4rem;
@@ -387,7 +372,6 @@ footer {
   padding: 1rem;
 }
 
-<<<<<<< HEAD
 .reserve_section {
   display: none;
   position: fixed;
@@ -441,7 +425,8 @@ footer {
 .form_btn:hover {
   background-color: var(--dark);
   color: var(--cream);
-=======
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -485,5 +470,4 @@ form {
   display: flex;
   justify-content: space-between;
   font-size: 18px;
->>>>>>> c92787f4ee7df413768638490f6e320f93b070d0
 }

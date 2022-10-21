@@ -1,11 +1,8 @@
 import '../style.css';
 import API from './GAPI.js';
-<<<<<<< HEAD
 import reservations from './reservations.js';
-=======
 import addLikesfunc from './addLikes.js';
 import { commentPopup } from './showComments.js';
->>>>>>> c92787f4ee7df413768638490f6e320f93b070d0
 
 const gamesDiv = document.querySelector('.games');
 const gameHeader = document.querySelector('.games_header');
@@ -80,22 +77,14 @@ const render = async () => {
         <p class="card__p">${game.short_description}</p>
         
         <div class="card_btns">
-<<<<<<< HEAD
-          <button class="card_btn">Comments</button>
-          <button class="card_btn_res" id="${game.id}">Reservations</button>
+          <button class="commentBtn card_btn">Comments</button>
+          <button class="card_btn" id="${game.id}">Reservations</button>
         </div>
       </div>
       `;
     reservations();
-=======
-          <button class="commentBtn card_btn">Comments</button>
-          <button class="card_btn">Reservations</button>
-        </div>
-      </div>
-      `;
     const commentButtons = document.querySelectorAll('.commentBtn');
     commentPopup(games, commentButtons);
->>>>>>> c92787f4ee7df413768638490f6e320f93b070d0
   });
   setTimeout(addLikeBtnListener, 3000, games);
 };
