@@ -78,7 +78,7 @@ const render = async () => {
         <p class="card__p">${game.short_description}</p>
         
         <div class="card_btns">
-          <button class="commentBtn">Comments</button>
+          <button class="commentBtn card_btn">Comments</button>
           <button class="card_btn">Reservations</button>
         </div>
       </div>

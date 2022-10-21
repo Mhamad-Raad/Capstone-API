@@ -6,12 +6,17 @@ var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
   element1.addEventListener('click', () => {
     postComments(element2.value, element3.value, index);
+   
     const commentsRow = document.querySelector('.commes');
     commentsRow.innerHTML += `<li class="eachComment">
     <p class="indi-comment">${date}</p>
     <p class="indi-comment">${element2.value}</p>
     <p class="indi-comment">${element3.value}</p>
    </li>`
+   const nameInput = document.querySelector('.form__input__name');
+   const commentInput = document.querySelector('.form__input__comment');
+   nameInput.value = '';
+   commentInput.value = '';
   });
   getComments(index, element4, element5);
 };
@@ -72,13 +77,12 @@ export const commentPopup = (data, buttons) => {
       const closeBtn = document.querySelector('.comment_close');
       const nameInput = document.querySelector('.form__input__name');
       const commentInput = document.querySelector('.form__input__comment');
-      const commentNumber = document.querySelector('.comment__qty')
+      const commentNumber = document.querySelector('.comment__qty');
       sendComments(submit, commentInput, nameInput, list, commentNumber, ind);
+      
       closePopup(closeBtn, commentSec);
       window.addEventListener('click', (e) => {
-        console.log(e.target);
         if (e.target === document.querySelector('.popComment')) {
-          console.log(e.target);
           commentSection.innerHTML = '';
           commentSection.classList.remove('show');
         }
