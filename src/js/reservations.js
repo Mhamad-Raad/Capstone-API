@@ -44,16 +44,17 @@ const reservations = () => {
       <p class="indi-comment">${endDate}</p>
     </li>`;
     } else {
-        alert('Please fill in all fields');
-    }}
+      alert('Please fill in all fields');
+    }
+  }
 
   const resPop = (arg, reservationList, reservationTitle) => {
     const reservationFigure = arg.length === undefined ? 0 : arg.length;
     reservationList.innerHTML = '';
-    reservationTitle.innerHTML = ``;
+    reservationTitle.innerHTML = '';
     reservationTitle.innerHTML = `<p>Reservations (${reservationFigure})</p>`;
     for (let i = 0; i < arg.length; i += 1) {
-    reservationList.innerHTML += `<li class="eachComment">
+      reservationList.innerHTML += `<li class="eachComment">
                                   <p class="indi-comment">${arg[i].username}</p>
                                   <p class="indi-comment">${arg[i].date_start}</p>
                                   <p class="indi-comment">${arg[i].date_end}</p>
@@ -68,9 +69,6 @@ const reservations = () => {
     resPop(data, reservationList, reservationTitle);
     return data;
   };
-
-
-
   const reservationsBtn = document.querySelectorAll('.card_btn');
 
   reservationsBtn.forEach((btn) => {
@@ -133,7 +131,6 @@ const reservations = () => {
         document.querySelector('.i2').value = '';
         document.querySelector('.i3').value = '';
       });
-      
     });
   });
 };
