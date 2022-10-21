@@ -1,8 +1,12 @@
-const { commPop } = require('./commentsApi');
+jest.mock('./commentsApi.js');
 
-test('Data should not be Null', () => {
-  const arg = [{"test": "Okay"}, {"item2": "Yes"}]
-  const element1 = document.querySelector('.comment-section')
-  const element2 = document.querySelector('.comment__qty')
-  expect(commPop(arg, element1, element2)).not.toBeNull();
+const { postComments, getcomments } = require('./commentsApi');
+
+const comments = [{"comment": "Love it", "username": "Munoz"}, {"comment": "hate it", "username": "Pedro"}];
+test('Must Return length of Comments', () => {
+  expect(getcomments(comments)).toBe(2);
+})
+const arr = [];
+test('Must add comment to Array', () => {
+  expect(postComments({"comment": "Amazing", "username": "Lucas"}, arr)).toBe(1);
 })

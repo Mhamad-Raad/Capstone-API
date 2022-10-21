@@ -7,3 +7,5 @@ const getcomments = (comments) => {
   const length = comments.length;
   return length;
 }
+
+module.exports = { postComments, getcomments }
