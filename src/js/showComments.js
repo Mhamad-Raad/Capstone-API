@@ -1,11 +1,11 @@
 import { postComments, getComments } from './commentsApi.js';
 
 // ------------------EVENT LISTENER FOR ADD COMMENTS BUTTON
-const sendComments = (element1, element2, element3, element4, index) => {
+const sendComments = (element1, element2, element3, element4, element5, index) => {
   element1.addEventListener('click', () => {
     postComments(element2.value, element3.value, index);
-    getComments(index, element4);
   });
+  getComments(index, element4, element5);
 };
 
 // -------------- EVENT LISTENER TO CLOSE POPUP
@@ -19,22 +19,20 @@ const closePopup = (element1, element2) => {
 // ------------EVENT LISTENER FOR COMMENTS BUTTON
 export const commentPopup = (data, buttons) => {
   const commentSection = document.querySelector('.comment-section');
-  console.log(data)
   const commentBtnArr = Array.from(buttons);
   commentBtnArr.forEach((button) => {
     const ind = commentBtnArr.indexOf(button);
     button.addEventListener('click', () => {
-      //getComments(ind);
       commentSection.innerHTML = `<div class="popComment">
                                     <div class="comment">
-                                      <div class="comment_close"><img src="" alt="close"></div>
+                                      <div class="comment_close">&#10006;</div>
                                       <div class="comment__top">
                                         <div class="comment__name">${data[ind].title}</div>
                                       </div>
                                       <div class="comment__content">
                                         <div class="comment__data">
                                           <div class="data_desc">
-                                            <div class="comment__img"><img src="#" alt=""></div>
+                                            <div class="comment__img"><img src="${data[ind].thumbnail}" alt=""></div>
                                             <ul class="comment_list">
                                               <li class="comment_li"><span class="comment_type">genre:</span>${data[ind].genre}</li>
                                               <li class="comment_li"><span class="comment_type">platform:</span>${data[ind].platform}</li>
@@ -59,17 +57,16 @@ export const commentPopup = (data, buttons) => {
                                       </div>
                                     </div>
                                   </div>`;
-      console.log('clicking');
       const commentSec = document.querySelector('.comment-section');
-      console.log(commentSec)
       const submit = document.querySelector('.form__btn');
       const list = document.querySelector('.comment__div');
       const closeBtn = document.querySelector('.comment_close');
-      const nameInput = document.querySelector('form__input__name');
+      const nameInput = document.querySelector('.form__input__name');
       const commentInput = document.querySelector('.form__input__comment');
-      sendComments(submit, commentInput, nameInput, list, ind);
+      const commentNumber = document.querySelector('.comment__qty')
+      sendComments(submit, commentInput, nameInput, list, commentNumber, ind);
       closePopup(closeBtn, commentSec);
-      getComments(ind, list);
+      getComments(ind, list, commentNumber);
     });
   });
 

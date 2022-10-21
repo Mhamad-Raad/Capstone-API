@@ -232,7 +232,8 @@ header {
   gap: 10px;
 }
 
-.card_btn {
+.card_btn,
+.comentBtn {
   background-color: var(--cream);
   border-radius: 0.5rem;
   border: 1px solid var(--cream);
@@ -272,7 +273,7 @@ footer {
 /* ---------Pop--------- */
 
 .popComment {
-  display: none;
+  /*display: none;*/
   position: fixed;
   top: 0;
   left: 0;
@@ -348,3 +349,4 @@ footer {
   font-weight: bold;
   padding: 1rem;
 }
+
