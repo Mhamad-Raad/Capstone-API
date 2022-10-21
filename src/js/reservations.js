@@ -9,9 +9,7 @@ const reservations = () => {
     };
 
     const data = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${idGame}`, options)
-      .then((response) => response.json()).then((data) => {
-        return data;
-      });
+      .then((response) => response.json()).then((data) => data);
     return data;
   };
 
@@ -27,51 +25,49 @@ const reservations = () => {
 
   function addReservation(userName, startDate, endDate, itemId, newRes) {
     const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/pLdIyUuZk5KvQvEUadM7/reservations/';
-  if (userName !== '' && startDate !== '' && endDate !== '' && itemId !== '') {
-  const a = fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-        item_id: itemId.toString(),
-        username: userName,
-        date_start: startDate,
-        date_end: endDate,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    }).then((reply) => reply.text()).then((val) => val);
-    newRes.innerHTML += `<li class="eachComment">
-    <p class="indi-comment">${userName}</p>
-    <p class="indi-comment">${startDate}</p>
-    <p class="indi-comment">${endDate}</p>
-   </li>`;
-  } else {
-      alert('Please fill in all fields');
-    }
-}
+    if (userName !== '' && startDate !== '' && endDate !== '' && itemId !== '') {
+      fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          item_id: itemId.toString(),
+          username: userName,
+          date_start: startDate,
+          date_end: endDate,
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((reply) => reply.text()).then((val) => val);
+      newRes.innerHTML += `<li class="eachComment">
+      <p class="indi-comment">${userName}</p>
+      <p class="indi-comment">${startDate}</p>
+      <p class="indi-comment">${endDate}</p>
+    </li>`;
+    } else {
+        alert('Please fill in all fields');
+    }}
 
-const resPop = (arg, reservationList, reservationTitle) => {
-  const reservationFigure = arg.length === undefined ? 0 : arg.length;
-  reservationList.innerHTML = '';
-  reservationTitle.innerHTML = ``;
-  reservationTitle.innerHTML = `<p>Reservations (${reservationFigure})</p>`;
-  for (let i = 0; i < arg.length; i += 1) {
+  const resPop = (arg, reservationList, reservationTitle) => {
+    const reservationFigure = arg.length === undefined ? 0 : arg.length;
+    reservationList.innerHTML = '';
+    reservationTitle.innerHTML = ``;
+    reservationTitle.innerHTML = `<p>Reservations (${reservationFigure})</p>`;
+    for (let i = 0; i < arg.length; i += 1) {
     reservationList.innerHTML += `<li class="eachComment">
                                   <p class="indi-comment">${arg[i].username}</p>
                                   <p class="indi-comment">${arg[i].date_start}</p>
                                   <p class="indi-comment">${arg[i].date_end}</p>
                                  </li>`;
-  }
-};
+    }
+  };
 
-const getReservations = async (ID, reservationList, reservationTitle) => {
-  console.log(ID);
+  const getReservations = async (ID, reservationList, reservationTitle) => {
     const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/pLdIyUuZk5KvQvEUadM7/reservations?item_id=${ID}`; // eslint-disable-line
     const recieve = await fetch(url).then((reply) => reply.json()).then((val) => val);
     const data = await recieve;
     resPop(data, reservationList, reservationTitle);
     return data;
-};
+  };
 
 
 
