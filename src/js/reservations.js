@@ -25,13 +25,57 @@ const reservations = () => {
     });
   };
 
-  function addReservation(userName, startDate, endDate, itemId) {
+  function addReservation(userName, startDate, endDate, itemId, newRes) {
+    const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/pLdIyUuZk5KvQvEUadM7/reservations/';
+  if (userName !== '' && startDate !== '' && endDate !== '' && itemId !== '') {
+  const a = fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        item_id: itemId.toString(),
+        username: userName,
+        date_start: startDate,
+        date_end: endDate,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((reply) => reply.text()).then((val) => val);
+    newRes.innerHTML += `<li class="eachComment">
+    <p class="indi-comment">${userName}</p>
+    <p class="indi-comment">${startDate}</p>
+    <p class="indi-comment">${endDate}</p>
+   </li>`;
+  } else {
+      alert('Please fill in all fields');
+    }
+}
 
+const resPop = (arg, reservationList, reservationTitle) => {
+  const reservationFigure = arg.length === undefined ? 0 : arg.length;
+  reservationList.innerHTML = '';
+  reservationTitle.innerHTML = ``;
+  reservationTitle.innerHTML = `<p>Reservations (${reservationFigure})</p>`;
+  for (let i = 0; i < arg.length; i += 1) {
+    reservationList.innerHTML += `<li class="eachComment">
+                                  <p class="indi-comment">${arg[i].username}</p>
+                                  <p class="indi-comment">${arg[i].date_start}</p>
+                                  <p class="indi-comment">${arg[i].date_end}</p>
+                                 </li>`;
   }
+};
+
+const getReservations = async (ID, reservationList, reservationTitle) => {
+  console.log(ID);
+    const url = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/pLdIyUuZk5KvQvEUadM7/reservations?item_id=${ID}`; // eslint-disable-line
+    const recieve = await fetch(url).then((reply) => reply.json()).then((val) => val);
+    const data = await recieve;
+    resPop(data, reservationList, reservationTitle);
+    return data;
+};
 
 
 
-  const reservationsBtn = document.querySelectorAll('.card_btn_res');
+  const reservationsBtn = document.querySelectorAll('.card_btn');
 
   reservationsBtn.forEach((btn) => {
     btn.addEventListener('click', async () => {
@@ -66,20 +110,34 @@ const reservations = () => {
         <div class="form__reserve">
           <form class="form__group">
           <h3 class="reserve__h3">Add a reservation</h3>
-          <input type="text" class="form__input" placeholder="Your name">
-          <input type="date" class="form__input" placeholder="Start Date">
-          <input type="date" class="form__input" placeholder="Finish Date">
-          <button class="form_btn">Reserve</button>
+          <input type="text" class="form__input i1" placeholder="Your name">
+          <input type="date" class="form__input i2" placeholder="Start Date">
+          <input type="date" class="form__input i3"  placeholder="Finish Date">
+          <button type="button" class="reserve_btn">Reserve</button>
           </form>
           <div class="reserve__msg">
-
+            <h3 class="reserve__h3"></h3>
           </div>
         </div>
         </div>
 
       </div>`;
+      const reservationList = document.querySelector('.reserve__msg');
+      const reservationTitle = document.querySelector('.reserve__h3');
+      getReservations(idGame, reservationList, reservationTitle);
       closeReserve(reserveSection);
-      // addreservation();
+      document.querySelector('.reserve_btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        const userName = document.querySelector('.i1').value;
+        const startDate = document.querySelector('.i2').value;
+        const endDate = document.querySelector('.i3').value;
+        const itemId = idGame;
+        addReservation(userName, startDate, endDate, itemId, reservationList);
+        document.querySelector('.i1').value = '';
+        document.querySelector('.i2').value = '';
+        document.querySelector('.i3').value = '';
+      });
+      
     });
   });
 };
