@@ -288,6 +288,18 @@ footer {
   margin-top: 5rem;
 }
 
+.comment_close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1.5rem;
+  font-size: 20px;
+  color: var(--cream);
+}
+
+.comment_close:hover {
+  cursor: pointer;
+}
+
 /* ---------Pop--------- */
 
 .popComment {
@@ -312,14 +324,6 @@ footer {
   border: 5px solid var(--purple);
   border-radius: 0.5rem;
   background-color: #1b2430cc;
-}
-
-.comment_close {
-  position: absolute;
-  top: 0.5rem;
-  right: 1.5rem;
-  font-size: 20px;
-  color: var(--cream);
 }
 
 .comment__top {
