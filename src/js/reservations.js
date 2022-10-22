@@ -136,7 +136,7 @@ const reservations = () => {
         const endDate = document.querySelector('.i3').value;
         const itemId = idGame;
         addReservation(userName, startDate, endDate, itemId, reservationList,
-        reservationTitle, data);
+          reservationTitle, data);
         document.querySelector('.i1').value = '';
         document.querySelector('.i2').value = '';
         document.querySelector('.i3').value = '';
