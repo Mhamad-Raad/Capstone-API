@@ -127,7 +127,7 @@ const reservations = () => {
       </div>`;
       const reservationList = document.querySelector('.reserve__msg');
       const reservationTitle = document.querySelector('.reserve__h3');
-     let data = await getReservations(idGame, reservationList, reservationTitle);
+      const data = await getReservations(idGame, reservationList, reservationTitle);
       closeReserve(reserveSection);
       document.querySelector('.reserve_btn').addEventListener('click', (e) => {
         e.preventDefault();
@@ -135,7 +135,8 @@ const reservations = () => {
         const startDate = document.querySelector('.i2').value;
         const endDate = document.querySelector('.i3').value;
         const itemId = idGame;
-        addReservation(userName, startDate, endDate, itemId, reservationList, reservationTitle, data);
+        addReservation(userName, startDate, endDate, itemId, reservationList,
+        reservationTitle, data);
         document.querySelector('.i1').value = '';
         document.querySelector('.i2').value = '';
         document.querySelector('.i3').value = '';

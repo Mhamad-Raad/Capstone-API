@@ -6,19 +6,17 @@ const sendComments = (element1, element2, element3, element4, element5, index) =
   const date = `${today.getFullYear()} - ${today.getMonth() + 1} - ${today.getDate()}`;
   element1.addEventListener('click', async () => {
     const data = await getComments(index, element4, element5);
-    postComments(element2.value, element3.value, index, element5,  data.length);
+    postComments(element2.value, element3.value, index, element5, data.length);
     const commentsRow = document.querySelector('.commes');
     commentsRow.innerHTML += `<li class="eachComment">
     <p class="indi-comment">${date}</p>
     <p class="indi-comment">${element2.value}</p>
     <p class="indi-comment">${element3.value}</p>
    </li>`;
-   
     const nameInput = document.querySelector('.form__input__name');
     const commentInput = document.querySelector('.form__input__comment');
     nameInput.value = '';
     commentInput.value = '';
-    
   });
   getComments(index, element4, element5);
 };

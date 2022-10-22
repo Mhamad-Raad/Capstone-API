@@ -1,5 +1,5 @@
 // Populate DOM with comments
-const commPop = (arg, element, element2, length) => {
+const commPop = (arg, element, element2) => {
   const commentFigure = arg.length === undefined ? 0 : arg.length;
   element.innerHTML = '';
   // .innerHTML = `<p>Comments (${commentFigure})</p>`;
@@ -12,7 +12,6 @@ const commPop = (arg, element, element2, length) => {
                           <p class="indi-comment">${arg[i].username}</p>
                          </li>`;
   }
-  
 };
 
 // Post Comments to API
