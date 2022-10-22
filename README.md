@@ -36,7 +36,9 @@ To get a local copy up and running follow these simple example steps.
 
 ## Author
 
-👤 **Author1**
+👤 **Mhamad Raad**
+👤 **Akpuru Solomon Barine**
+👤 **R. Mauricio Mendoza H.**
 
 - GitHub: [@githubhandle](https://github.com/Mhamad-Raad/)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/mhamad-raad-446a75227/)
