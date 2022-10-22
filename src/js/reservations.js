@@ -26,7 +26,7 @@ const reservations = () => {
     });
   };
 
-  function addReservation(userName, startDate, endDate, itemId, newRes) {
+  function addReservation(userName, startDate, endDate, itemId, newRes, resTitle, data) {
     const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/pLdIyUuZk5KvQvEUadM7/reservations/';
     if (userName !== '' && startDate !== '' && endDate !== '' && itemId !== '') {
       fetch(url, {
@@ -41,6 +41,12 @@ const reservations = () => {
           'Content-type': 'application/json; charset=UTF-8',
         },
       }).then((reply) => reply.text()).then((val) => val);
+      data.push({
+        username: userName,
+        date_start: startDate,
+        date_end: endDate,
+      });
+      resTitle.innerHTML = `Reservations (${data.length})`;
       newRes.innerHTML += `<li class="eachComment">
       <p class="indi-comment">${userName}</p>
       <p class="indi-comment">${startDate}</p>
@@ -121,7 +127,7 @@ const reservations = () => {
       </div>`;
       const reservationList = document.querySelector('.reserve__msg');
       const reservationTitle = document.querySelector('.reserve__h3');
-      getReservations(idGame, reservationList, reservationTitle);
+     let data = await getReservations(idGame, reservationList, reservationTitle);
       closeReserve(reserveSection);
       document.querySelector('.reserve_btn').addEventListener('click', (e) => {
         e.preventDefault();
@@ -129,7 +135,7 @@ const reservations = () => {
         const startDate = document.querySelector('.i2').value;
         const endDate = document.querySelector('.i3').value;
         const itemId = idGame;
-        addReservation(userName, startDate, endDate, itemId, reservationList);
+        addReservation(userName, startDate, endDate, itemId, reservationList, reservationTitle, data);
         document.querySelector('.i1').value = '';
         document.querySelector('.i2').value = '';
         document.querySelector('.i3').value = '';
