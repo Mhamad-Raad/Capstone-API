@@ -4,18 +4,21 @@ import { postComments, getComments } from './commentsApi.js';
 const sendComments = (element1, element2, element3, element4, element5, index) => {
   const today = new Date();
   const date = `${today.getFullYear()} - ${today.getMonth() + 1} - ${today.getDate()}`;
-  element1.addEventListener('click', () => {
-    postComments(element2.value, element3.value, index);
+  element1.addEventListener('click', async () => {
+    const data = await getComments(index, element4, element5);
+    postComments(element2.value, element3.value, index, element5,  data.length);
     const commentsRow = document.querySelector('.commes');
     commentsRow.innerHTML += `<li class="eachComment">
     <p class="indi-comment">${date}</p>
     <p class="indi-comment">${element2.value}</p>
     <p class="indi-comment">${element3.value}</p>
    </li>`;
+   
     const nameInput = document.querySelector('.form__input__name');
     const commentInput = document.querySelector('.form__input__comment');
     nameInput.value = '';
     commentInput.value = '';
+    
   });
   getComments(index, element4, element5);
 };
@@ -71,11 +74,12 @@ export const commentPopup = (data, buttons) => {
                                   </div>`;
       const commentSec = document.querySelector('.comment-section');
       const submit = document.querySelector('.form__btn');
-      const list = document.querySelector('.commes');
+      const list = document.querySelector('.comment__div');
       const closeBtn = document.querySelector('.comment_close1');
       const nameInput = document.querySelector('.form__input__name');
       const commentInput = document.querySelector('.form__input__comment');
       const commentNumber = document.querySelector('.comment__qty');
+      console.log(commentNumber);
       sendComments(submit, commentInput, nameInput, list, commentNumber, ind);
       closePopup(closeBtn, commentSec);
       window.addEventListener('click', (e) => {

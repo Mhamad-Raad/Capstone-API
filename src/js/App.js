@@ -89,5 +89,3 @@ const render = async () => {
   setTimeout(addLikeBtnListener, 3000, games);
 };
 window.load = render();
-
-// window.addEventListener('DOMContentLoaded', addLikeBtnListener);
