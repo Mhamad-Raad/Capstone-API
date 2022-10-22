@@ -1,5 +1,5 @@
 {
-  "name": "web-template",
+  "name": "capstone2",
   "version": "1.0.0",
   "lockfileVersion": 2,
   "requires": true,
@@ -14,15 +14,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mhamad-Raad/Web-Template.git"
+    "url": "git+https://github.com/Mhamad-Raad/Capstone-API.git"
   },
   "keywords": [],
   "author": "Mhamad Raad",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Mhamad-Raad/Web-Template/issues"
-  },
-  "homepage": "https://github.com/Mhamad-Raad/Web-Template#readme",
+  "bugs": {},
+  "homepage": "https://github.com/Mhamad-Raad/Capstone-API#readme",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "babel-eslint": "^10.1.0",
@@ -53,6 +51,7 @@
     ]
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "node-fetch": "^3.2.10"
   }
 }
